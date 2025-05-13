@@ -55,3 +55,17 @@ Pregunta: Compara los protocolos TCP y UDP y sus características en contexto de
 TCP y UDP son protocolos de transporte con funciones distintas en la transmisión de datos. TCP es confiable y orientado a conexión, lo que significa que establece un canal seguro entre emisor y receptor antes de enviar datos. Este protocolo garantiza que los datos lleguen completos, en orden y sin errores, lo que lo hace ideal para navegación web, correo electrónico o envío de planes estratégicos en la red rebelde. A cambio, introduce más latencia y usa más recursos.
 
 En cambio, UDP es no confiable y sin conexión. No establece un canal previo ni verifica la entrega, simplemente envía los datos lo más rápido posible. Eso lo vuelve más eficiente y con menor retardo, lo que es clave en aplicaciones como streaming, juegos o envío de coordenadas de combate en tiempo real, donde importa más la velocidad que la precisión absoluta. Su rapidez es una ventaja táctica cuando cada milisegundo cuenta, aunque se pierda algún dato por el camino.
+
+
+Ejercicio 5:
+
+Pregunta: Explica brevemente la diferencia entre cifrado simétrico y cifrado asimétrico en el contexto de las comunicaciones de la Alianza. ¿Cómo funciona cada esquema y qué ventajas ofrece?​
+
+
+### Respuesta:
+
+El cifrado simétrico utiliza una única clave compartida entre emisor y receptor. En este caso, serán Leia y Luke los que usaran la misma contraseña para cifrar y descifrar sus holomensajes. Es rápido y consume pocos recursos, ideal para grandes volúmenes de datos o cuando ya se ha establecido confianza. Sin embargo, si la clave es interceptada, toda la comunicación queda comprometida.
+
+El cifrado asimétrico usa un par de claves: una pública y una privada. Esto permite enviar mensajes cifrados a nuevos aliados sin haber intercambiado una clave previamente, ya que basta con conocer su clave pública. También permite verificar la identidad del remitente con un proceso de autenticicación y asegurarse de que el mensaje no fue alterado.
+
+En cuanto a la administración remota de sistemas, es fundamental emplear protocolos seguros como SSH en lugar de Telnet. Telnet transmite datos en texto plano, incluyendo contraseñas, lo que lo hace extremadamente vulnerable. En cambio, SSH cifra toda la sesión y permite autenticación por clave pública o incluso mediante certificados, lo que fortalece la seguridad. Los certificados SSH permiten gestionar el acceso de forma más gradual y segura, evitando errores humanos como confiar en claves sin validar o no eliminar claves de exmiembros. En la red rebelde, usar SSH garantiza que sólo los agentes autorizados puedan acceder y operar los sistemas sin comprometer la misión
