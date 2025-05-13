@@ -1,4 +1,4 @@
-Ejercicio 1. 
+## Ejercicio 1. 
 
 
 Pregunta: ¿Cómo dividirías la red 172.16.0.0/24 en subredes para satisfacer las necesidades anteriores, asignando direcciones IP a cada segmento de la base? Indica las subredes obtenidas (con su notación de máscara /xx), la cantidad de hosts útiles en cada una, y especifica qué subred se destinaría al enlace troncal interplanetario.
@@ -12,11 +12,21 @@ Centro Médico: ~20 hosts
 
 Hangar y Taller: ~14 hosts
 
+Red asignada: 172.16.0.0/24
+Total de direcciones útiles: 254
 
 ### Respuesta:
 
+| Departamento            | Subred          | Máscara         | Default Gateway | Hosts útiles | Rango de Hosts              | Broadcast    |
+| ----------------------- | --------------- | --------------- | --------------- | ------------ | --------------------------- | ------------ |
+| Comando Central         | 172.16.0.0/26   | 255.255.255.192 | 172.16.0.1      | 62           | 172.16.0.2 – 172.16.0.62    | 172.16.0.63  |
+| Defensa Perimetral      | 172.16.0.64/27  | 255.255.255.224 | 172.16.0.65     | 30           | 172.16.0.66 – 172.16.0.94   | 172.16.0.95  |
+| Centro Médico           | 172.16.0.96/27  | 255.255.255.224 | 172.16.0.97     | 30           | 172.16.0.98 – 172.16.0.126  | 172.16.0.127 |
+| Hangar y Taller         | 172.16.0.128/28 | 255.255.255.240 | 172.16.0.129    | 14           | 172.16.0.130 – 172.16.0.142 | 172.16.0.143 |
+| Enlace Troncal (Antena) | 172.16.0.144/29 | 255.255.255.248 | 172.16.0.145    | 6            | 172.16.0.146 – 172.16.0.150 | 172.16.0.151 |
 
-Ejercicio 2.
+
+## Ejercicio 2.
 
 
 Pregunta: Compara el enrutamiento estático con el enrutamiento dinámico. ¿Cuáles son las ventajas e inconvenientes de cada enfoque en la administración de rutas? En tu respuesta, menciona al menos un protocolo de enrutamiento dinámico (por ejemplo, RIP u OSPF) y comenta por qué los protocolos de vector de distancia difieren de los de estado de enlace en términos de rendimiento y complejidad​
@@ -31,7 +41,7 @@ Por otro lado, el enrutamiento dinámico permite que los routers ajusten automá
 La diferencia entre ambos tipos de protocolos radica en su rendimiento y complejidad. Los de vector de distancia son más fáciles de implementar, pero menos eficientes y más propensos a errores en redes grandes. Por otro lado, los de estado de enlace ofrecen un mejor rendimiento al calcular rutas óptimas más rápidamente, aunque requieren más recursos y una configuración más compleja. En resumen, mientras que el enrutamiento estático es adecuado para escenarios simples y controlados, el dinámico es esencial en redes complejas y cambiantes, donde la resiliencia y la actualización automática son fundamentales.
 
 
-Ejercicio 3.
+## Ejercicio 3.
 
 Pregunta: Explica el funcionamiento básico del sistema DNS y su importancia en la comunicación en redes. ¿Cómo realiza la red rebelde (o cualquier red TCP/IP) la resolución de nombres de dominio a direcciones IP? Incluye en tu explicación qué es un servidor DNS y un registro (por ejemplo, un registro A), ilustrando con un ejemplo simple (por ejemplo: traducir holonet.rebelion.org a una dirección IP)​
 
@@ -46,7 +56,7 @@ Dentro de estos registros, el tipo A es el más común cuando se busca la direcc
 Si este sistema falla, y los servidores DNS dejan de estar disponibles, no se podrían traducir los nombres a IP. Esto interrumpiría servicios como navegación web, conexión a APIs o comunicaciones por SSH. Aunque físicamente los equipos estén conectados, sin DNS, la Alianza quedaría prácticamente incomunicada salvo que memoricen todas las IPs, lo cual es poco práctico en una red dinámica y distribuida.
 
 
-Ejercicio 4: 
+## Ejercicio 4: 
 
 Pregunta: Compara los protocolos TCP y UDP y sus características en contexto de la transmisión de datos. ¿Por qué TCP se considera un protocolo confiable y orientado a conexión, y qué implica eso en cuanto a rendimiento? ¿Por qué UDP es no confiable y sin conexión, y en qué casos su rapidez resulta ventajosa?​
 
@@ -57,7 +67,7 @@ TCP y UDP son protocolos de transporte con funciones distintas en la transmisió
 En cambio, UDP es no confiable y sin conexión. No establece un canal previo ni verifica la entrega, simplemente envía los datos lo más rápido posible. Eso lo vuelve más eficiente y con menor retardo, lo que es clave en aplicaciones como streaming, juegos o envío de coordenadas de combate en tiempo real, donde importa más la velocidad que la precisión absoluta. Su rapidez es una ventaja táctica cuando cada milisegundo cuenta, aunque se pierda algún dato por el camino.
 
 
-Ejercicio 5:
+## Ejercicio 5:
 
 Pregunta: Explica brevemente la diferencia entre cifrado simétrico y cifrado asimétrico en el contexto de las comunicaciones de la Alianza. ¿Cómo funciona cada esquema y qué ventajas ofrece?​
 
