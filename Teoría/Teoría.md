@@ -37,10 +37,21 @@ Pregunta: Explica el funcionamiento básico del sistema DNS y su importancia en 
 
 ### Respuesta:
 
-El DNS es crucial para las redes que usan TCP/IP, ya que ayuda a traducir nombres como Holonetrebelionorg en direcciones IP necesarias para la comunicación del dispositivo. Este método es similar a una lista de teléfonos para Internet: en lugar de recordar números, las personas usan nombres simples, y el DNS busca hacia arriba y devuelve la dirección IP correcta
+El Sistema de Nombres de Dominio, conocido como DNS, cumple un papel esencial en redes como Internet o la HoloRed rebelde. Su función es traducir nombres de dominio legibles, como holonet.rebelion.org, en direcciones IP numéricas que los sistemas de red pueden procesar, por ejemplo, 203.0.113.42. Sin esta traducción, los dispositivos no podrían establecer comunicación usando nombres simbólicos.
 
-El trabajo del servidor DNS es obtener una consulta, que verifique si la IP vinculada al nombre solicitado está en su memoria y, si no, pase la solicitud a otros servidores DNS hasta que obtenga una respuesta. Este sistema utiliza una estructura similar a un árbol con una raíz principal que guía la búsqueda a los servidores para cada nivel de dominio. Un tipo de registro frecuente es el tipo A, que relaciona un nombre de dominio con una dirección IPv4.
+El proceso de resolución comienza cuando un equipo necesita conocer la IP asociada a un dominio. Este equipo actúa como cliente DNS, enviando una consulta al servidor DNS configurado. Si este servidor no tiene la respuesta guardada en su caché, inicia una búsqueda recursiva preguntando a los servidores raíz, luego a los de nivel superior (como .org), y finalmente al servidor autoritativo del dominio (rebelion.org), que contiene los registros oficiales.
 
-Por ejemplo, si un navegador intenta acceder a holonet.rebelion.org, su sistema operativo consulta primero el servidor DNS local. Si no tiene la respuesta, este consulta a su proveedor de Internet, que a su vez contacta con otros servidores DNS hasta encontrar el registro A que devuelve la dirección IP correspondiente.
+Dentro de estos registros, el tipo A es el más común cuando se busca la dirección IPv4 de un dominio. Por ejemplo, un registro A para holonet.rebelion.org podría devolver la IP 203.0.113.42, junto con un valor TTL que indica cuánto tiempo puede mantenerse esa respuesta en caché.
 
-Si el servidor DNS no está disponible, el sistema no puede traducir los nombres simbólicos, lo que imposibilita el acceso a servicios como páginas web, correo electrónico o bases de datos en red. En el contexto de la red rebelde, esto significaría quedar incomunicados, ya que no podrían resolver nombres como echo.base o endor.transmisiones para establecer conexión con sus aliados.
+Si este sistema falla, y los servidores DNS dejan de estar disponibles, no se podrían traducir los nombres a IP. Esto interrumpiría servicios como navegación web, conexión a APIs o comunicaciones por SSH. Aunque físicamente los equipos estén conectados, sin DNS, la Alianza quedaría prácticamente incomunicada salvo que memoricen todas las IPs, lo cual es poco práctico en una red dinámica y distribuida.
+
+
+Ejercicio 4: 
+
+Pregunta: Compara los protocolos TCP y UDP y sus características en contexto de la transmisión de datos. ¿Por qué TCP se considera un protocolo confiable y orientado a conexión, y qué implica eso en cuanto a rendimiento? ¿Por qué UDP es no confiable y sin conexión, y en qué casos su rapidez resulta ventajosa?​
+
+### Respuesta:
+
+TCP y UDP son protocolos de transporte con funciones distintas en la transmisión de datos. TCP es confiable y orientado a conexión, lo que significa que establece un canal seguro entre emisor y receptor antes de enviar datos. Este protocolo garantiza que los datos lleguen completos, en orden y sin errores, lo que lo hace ideal para navegación web, correo electrónico o envío de planes estratégicos en la red rebelde. A cambio, introduce más latencia y usa más recursos.
+
+En cambio, UDP es no confiable y sin conexión. No establece un canal previo ni verifica la entrega, simplemente envía los datos lo más rápido posible. Eso lo vuelve más eficiente y con menor retardo, lo que es clave en aplicaciones como streaming, juegos o envío de coordenadas de combate en tiempo real, donde importa más la velocidad que la precisión absoluta. Su rapidez es una ventaja táctica cuando cada milisegundo cuenta, aunque se pierda algún dato por el camino.
